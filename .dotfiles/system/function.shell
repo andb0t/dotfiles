@@ -1,0 +1,121 @@
+if "$VERBOSE"; then
+  echo "Loading function.shell"
+fi
+
+# Create a new directory and enter it
+function mk () {
+  mkdir -p "$@" && cd "$@"
+}
+
+# Extract many types of compressed packages
+# Credit: http://nparikh.org/notes/zshrc.txt
+extract () {
+  if [ -f "$1" ]; then
+    case "$1" in
+      *.tar.bz2)  tar -jxvf "$1"                        ;;
+      *.tar.gz)   tar -zxvf "$1"                        ;;
+      *.tar.xz)   tar -xvf "$1"                         ;;
+      *.bz2)      bunzip2 "$1"                          ;;
+      *.dmg)      hdiutil mount "$1"                    ;;
+      *.gz)       gunzip "$1"                           ;;
+      *.tar)      tar -xvf "$1"                         ;;
+      *.tbz2)     tar -jxvf "$1"                        ;;
+      *.tgz)      tar -zxvf "$1"                        ;;
+      *.zip)      unzip "$1" -d "${1%.zip}"             ;;
+      *.ZIP)      unzip "$1" -d "${1%.ZIP}"             ;;
+      *.pax)      cat "$1" | pax -r                     ;;
+      *.pax.Z)    uncompress "$1" --stdout | pax -r     ;;
+      *.Z)        uncompress "$1"                       ;;
+      *) echo "'$1' cannot be extracted/mounted via extract()" ;;
+    esac
+  else
+     echo "'$1' is not a valid file to extract"
+  fi
+}
+
+# Compress files and dirs to tar file
+compress () {
+    # usage: compress SOURCE [SOURCES...] TARGET
+    last=${@:${#@}}
+    length=${#@}-1
+    others=(${@:1:$length})
+    echo "Compressing: $others"
+    tar -cvf $last ${others[@]}
+    echo "Finished compression: $last"
+}
+
+# Clean tex temporary files
+clean_tex () {
+  echo "Removing temporary LateX files"
+  latexmk -c
+}
+
+# Clean temporary cpp files
+clean_cpp () {
+  echo "Moving temporary cpp files to $TRASH"
+  mv *_C.d $TRASH
+  mv *cxx.d $TRASH
+  mv *~ $TRASH
+  mv *_C.so $TRASH
+  mv *__.cxx $TRASH
+  mv *dict.cxx $TRASH
+  mv *maincxx $TRASH
+  mv *map.in $TRASH
+  mv *cxx.so $TRASH
+  mv core.gt* $TRASH
+  mv core.kt* $TRASH
+  mv *_jobexec $TRASH
+  mv *.o $TRASH
+  mv AutoDict* $TRASH
+  mv *_dict_rdict.pcm $TRASH
+  mv *_ACLiC_linkdef.h $TRASH
+  mv *_ACLiC_mainC $TRASH
+  mv *_ACLiC_map.out $TRASH
+}
+
+# Intelligent path extension
+append_path () {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+prepend_path () {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="$1${PATH:+":$PATH"}"
+    fi
+}
+
+# Test shell command return value
+test_success () {
+  $@
+  val=$?
+  if [ $val -ne 0 ]
+  then
+      echo "\e[1m\e[31mFailed: $val\e[0m"
+  else
+      echo "\e[1m\e[32mSuccess!\e[0m"
+  fi
+  unset val
+}
+
+# execute jupyter notebooks
+jupyterrun () {
+    echo "Executing this notebook $1"
+    name=${1%.ipynb}".py"
+    tmp_name="tmp_$name"
+    jupyter nbconvert --to script --stdout "$1" > "$tmp_name" 
+    ipython "$tmp_name"
+    mv "$tmp_name" $TRASH
+    echo "Done executing notebook $1"
+}
+
+# show available colors
+colorwheel () {
+    for i in {0..255} ; do
+    	printf "\x1b[38;5;%sm%3d\x1b[0m:\x1b[48;5;%sm  \e[0m " "$i" "$i" "$i"
+    	if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
+        	printf "\n";
+    	fi
+	done
+}
+

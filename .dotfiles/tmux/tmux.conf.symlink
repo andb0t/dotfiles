@@ -1,0 +1,73 @@
+# ^A prefix like screen
+set -g prefix C-q
+unbind C-b
+
+# Start windows numbering at 1
+set -g base-index 1
+
+# Reload settings
+unbind r
+bind r source-file ~/.tmux.conf\; display-message "Config reloaded"
+
+# split panes using | and -
+unbind '"'; bind | split-window -h
+unbind %; bind - split-window -v
+bind \ split-window -h
+
+# Use Shift-arrow to switch panes
+bind S-Left swap-pane -s {left-of}
+bind S-Right swap-pane -s {right-of}
+bind S-Up swap-pane -s {up-of}
+bind S-Down swap-pane -s {down-of}
+
+# Copy mode
+setw -g mode-keys vi
+
+######################
+### DESIGN CHANGES ###
+######################
+
+set -g default-terminal "xterm-256color"
+
+# messaging
+set -g message-attr bold
+set -g message-fg colour232
+set -g message-bg colour166
+
+# pane borders
+set -g pane-border-bg colour236
+set -g pane-border-fg colour51
+set -g pane-active-border-bg colour236
+set -g pane-active-border-fg colour51
+
+# set inactive/active window styles
+set -g window-style 'fg=colour250,bg=colour235'
+set -g window-active-style 'fg=colour250,bg=colour232'
+
+# status line
+set -g status-justify left
+set -g status-bg default
+set -g status-fg colour12
+set -g status-interval 2
+
+set -g status-position bottom
+set -g status-bg colour234
+set -g status-fg colour137
+set -g status-attr dim
+set -g status-left ''
+set -g status-right '#[fg=colour233,bg=colour241,bold] %d/%m #[fg=colour233,bg=colour245,bold] %H:%M:%S '
+set -g status-right-length 50
+set -g status-left-length 20
+
+setw -g window-status-current-fg colour81
+setw -g window-status-current-bg colour238
+setw -g window-status-current-attr bold
+setw -g window-status-current-format ' #I#[fg=colour250]:#[fg=colour255]#W#[fg=colour50]#F '
+
+setw -g window-status-fg colour138
+setw -g window-status-bg colour235
+setw -g window-status-attr none
+setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+
+run-shell $DOTFILES_DIR/tmux/tmux-resurrect/resurrect.tmux 
+

@@ -1,0 +1,51 @@
+'atom-workspace atom-text-editor':
+  'ctrl-k ctrl-k': 'editor:delete-to-end-of-line'
+  # 'ctrl-u ctrl-u': 'editor:delete-to-beginning-of-line'  # conflict with unselect-last
+
+'atom-workspace':
+  'ctrl-shift-7': 'blame:toggle'
+
+'atom-text-editor':
+  'ctrl-alt-shift-s': 'select-rectangle:select'
+
+# bookmarks
+  'ctrl-b': 'bookmarks:jump-to-next-bookmark'
+  'ctrl-shift-b': 'bookmarks:jump-to-previous-bookmark'
+
+'.platform-win32 atom-text-editor':
+  'ctrl-alt-b': 'bookmarks:toggle-bookmark'
+
+'body':
+  # tabs
+  'ctrl-alt-left': 'pane:move-item-left'
+  'ctrl-alt-right': 'pane:move-item-right'
+  # focus pane
+  'ctrl-q left':        'window:focus-pane-on-left'
+  'ctrl-q right':       'window:focus-pane-on-right'
+  'ctrl-q up':          'window:focus-pane-above'
+  'ctrl-q down':        'window:focus-pane-below'
+  # split pane
+  'ctrl-q ctrl-left':   'pane:split-left-and-move-active-item'
+  'ctrl-q ctrl-right':  'pane:split-right-and-move-active-item'
+  'ctrl-q ctrl-up':     'pane:split-up-and-move-active-item'
+  'ctrl-q ctrl-down':   'pane:split-down-and-move-active-item'
+  # move pane item
+  'ctrl-q shift-left':  'window:move-active-item-to-pane-on-left'
+  'ctrl-q shift-right': 'window:move-active-item-to-pane-on-right'
+  'ctrl-q shift-up':    'window:move-active-item-to-pane-above'
+  'ctrl-q shift-down':  'window:move-active-item-to-pane-below'
+  # destroy active pane
+  'ctrl-q x':   'pane:destroy-active-item'
+  # Focus on tree view like in Linux
+  'alt-\\': 'tree-view:toggle-focus'
+  # switch through panes
+  'ctrl-tab': 'pane:show-next-item'
+  'ctrl-shift-tab': 'pane:show-previous-item'
+  'ctrl-tab ^ctrl': 'unset!'  # removes pane-switching popup window
+  'ctrl-shift-tab ^ctrl': 'unset!'  # removes pane-switching popup window
+  # window behavior
+  'ctrl-shift-W': 'pane:close-other-items'
+
+'.tree-view':
+  'down': 'custom:expand-item-down',
+  'up': 'custom:expand-item-up'

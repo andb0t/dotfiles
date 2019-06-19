@@ -1,0 +1,104 @@
+"*":
+  Hydrogen:
+    autoScroll: false
+    globalMode: true
+    kernelNotifications: true
+    startDir: "dirOfFile"
+  "atom-beautify":
+    general:
+      _analyticsUserId: "b9b5d896-cb98-4560-97cf-9024a7cfe905"
+  "atom-ide-ui":
+    "atom-ide-code-format":
+      formatOnSave: true
+    "atom-ide-diagnostics-ui":
+      autoVisibility: true
+    hyperclick:
+      linuxTriggerKeys: "ctrlKey,altKey"
+      win32TriggerKeys: "ctrlKey,altKey"
+  "autocomplete-plus":
+    confirmCompletion: "tab"
+  "autocomplete-python":
+    useKite: false
+  "color-picker": {}
+  core:
+    audioBeep: false
+    autoHideMenuBar: true
+    disabledPackages: [
+      "color-picker"
+      "scala-worksheet-plus"
+      "Hydrogen"
+      "linter-scalac"
+      "markdown-preview"
+      "platformio-ide-terminal"
+      "atom-ide-ui"
+      "atom-beautify"
+    ]
+    packagesWithKeymapsDisabled: [
+      "blame"
+    ]
+    telemetryConsent: "limited"
+    uriHandlerRegistration: "always"
+  editor:
+    invisibles: {}
+    lineHeight: 1.4
+    scrollPastEnd: true
+    showInvisibles: true
+  "exception-reporting":
+    userId: "fbbdbefe-7d34-0aed-e287-eeb67f64e79c"
+  "file-icons":
+    strategies: {}
+  "go-plus":
+    disabledBundledPackages: [
+      "atom-ide-ui"
+    ]
+  "line-ending-selector":
+    defaultLineEnding: "LF"
+  linter:
+    lintPreviewTabs: false
+  "linter-flake8":
+    hangClosing: true
+    maxLineLength: 120
+  "linter-pylint":
+    disableTimeout: true
+  "linter-scalac":
+    scalacExecutablePath: "C:\\Program Files (x86)\\scala\\bin\\scalac"
+  "linter-shellcheck":
+    enableNotice: true
+  "linter-ui-default":
+    panelHeight: 69
+    showPanel: true
+  "markdown-preview":
+    breakOnSingleNewline: true
+  "markdown-preview-plus":
+    useGitHubStyle: true
+  minimap:
+    disablePythonDocLinks: true
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
+  "scala-worksheet-plus": {}
+  "spell-check":
+    locales: [
+      "en-US"
+      "de-DE"
+    ]
+  "split-diff":
+    ignoreWhitespace: true
+  tablr:
+    csvEditor:
+      columnDelimiter: "\\s*"
+  tabs:
+    addNewTabsAtEnd: true
+    displayMruTabList: false
+    enableMruTabSwitching: false
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
+".breakpoints.hydrogen":
+  editor:
+    autoIndent: true
+    autoIndentOnPaste: true
+    scrollPastEnd: true
+    showIndentGuide: false
+    showInvisibles: false

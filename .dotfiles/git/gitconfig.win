@@ -1,0 +1,39 @@
+[user]
+	name = NAME NAME NAME
+	email = YOUR@EMAIL.COM 
+[alias]
+	co = checkout
+	lola = log --graph --decorate=full\n--pretty=oneline --abbrev-commit --all
+	logf = "!echo \"Remember to add -S<string>\" ; git log --color -p --source --all"
+    br = branch -av
+[color]
+	ui = true
+	diff = auto
+	status = auto
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim
+	attributesfile = C:/Users/NAME NAME/.gitattributes
+    autocrlf = false
+    eol = lf
+[push]
+	default = simple
+[pull]
+	rebase = true
+[include]
+    # Set local file if existent
+    path = ~/.gitconfig_local
+[diff "labview"]
+	command = LVCompareWrapper.sh
+	tool = labview
+	guitool = labview
+[difftool "labview"]
+	cmd = LVCompareWrapper.sh \"${LOCAL}\" \"${REMOTE}\"
+	prompt = false
+[merge "labview"]
+	tool = labview
+	name = LabView Merge Driver
+	driver = LVMergeWrapper.sh \"%O\" \"%B\" \"%A\"
+[mergetool "labview"]
+	cmd = LVMergeWrapper.sh \"${BASE}\" \"${REMOTE}\" \"${LOCAL}\"
+	trustExitCode = true

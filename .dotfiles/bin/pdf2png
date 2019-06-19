@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+echo "Converting .pdf files to .png ..."
+
+for f in $@
+do
+    pathname=$(dirname "$f")
+    filename=$(basename "$f")
+    extension="${filename##*.}"
+    if [ "$extension" != 'pdf' ]; then
+	   continue
+    fi 
+    echo "  Processing $f"
+    filename="${filename%.*}"
+    #convert $f -trim -density 2400 -resize 100% PNG:"$pathname/$filename.png"
+    convert $f -trim -density 5800 -resize 200% PNG:"$pathname/$filename.png"
+done
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Setting up android terminal environment ..."
+
+# Protect from accidental apt usage
+alias apt="echo Warning! Using apt as root will screw up permissions! Aliased to pkg.; pkg"
+
+# System exports
+export DROPBOX="$HOME/storage/shared/Android/data/com.dropbox.android/files/u91286424/scratch/"
+
+# Make metasploit available
+prepend_path "$HOME/metasploit-framework"
+
+# Alert command (bugs: led light always red)
+alias alert='TMP_STATUS=$?; termux-notification --led-color "$([ "$TMP_STATUS" = "0" ] && echo 009900 || echo 990000)" --title "$([ "$TMP_STATUS" = "0" ] && echo Finished successfully! || echo Failed!)" --content "$(tail -n1 $HISTFILE | sed "s/[: 0-9]*;//" | sed "s/[|&;]* *alert//")"'
+

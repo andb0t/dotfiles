@@ -1,0 +1,61 @@
+if "$VERBOSE"; then
+  echo "Loading alias.shell"
+fi
+
+# allow aliases in sudo
+alias sudo='sudo '
+
+# enable color support of ls and also add handy aliases
+alias ls='ls --color=auto'
+alias grep='grep -s --color=auto'
+alias watch='watch --color '  # trailing space allows alias expansion
+
+# some more ls aliases
+alias ld="ls -ld */"   # List in long format, only directories
+alias ll='ls -alF'     # List all in long format
+alias la='ls -A'       # List all
+alias l='ls -l'        # List in long format
+alias lt='ls -ltr'     # List in long format sorted by timestamp
+alias lh='ls -lSh'     # List in long format sorted by human readable file size
+
+alias tree="tree -A"
+alias treed="tree -d"
+alias tree1="tree -d -L 1"
+alias tree2="tree -d -L 2"
+
+# disk space
+alias dh.='du -sh'
+alias  dh='du -sh * | sort -h'
+
+# Navigation aliases
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias -- -="cd -"                  # Go to previous dir with -
+alias cd.='cd $(readlink -f .)' # Go to real dir (i.e. if current dir is linked)
+alias dirs='dirs -v'
+
+# Default options
+alias rsync="rsync -vh"
+alias emacs="emacs -nw"
+alias pdflatex="pdflatex -interaction=nonstopmode -halt-on-error"
+
+# List declared aliases, functions, paths
+alias aliases="alias | sed 's/=.*//'"
+alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias exports="export -p | sed 's/=.*//' | awk '{print $NF}'"
+
+# dotfiles
+alias cddot='cd $DOTFILES_DIR'
+alias reload!='. ~/.bashrc'
+
+# C++
+alias cmakeclean='cd .. && rm -r build && mkdir build && cd $_'
+alias cmakenew='cmakeclean && cmake ..'
+
+# cluster
+alias k="kubectl"
+alias docker-clean=' \
+  docker ps --no-trunc -aqf "status=exited" | xargs docker rm ; \
+  docker images --no-trunc -aqf "dangling=true" | xargs docker rmi ; \
+  docker volume ls -qf "dangling=true" | xargs docker volume rm'

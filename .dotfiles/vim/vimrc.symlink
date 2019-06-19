@@ -1,0 +1,107 @@
+" File-type highlighting and configuration.
+" Run :filetype (without args) to see what you may have
+" to turn on yourself, or just set them all to be sure.
+syntax on
+filetype on
+filetype plugin on
+filetype indent on
+
+" Set a nice colorscheme
+colorscheme elflord
+
+" Set local file if existent
+
+let $LOCALFILE=expand("~/.vimrc_local")
+if filereadable($LOCALFILE)
+    source $LOCALFILE
+endif
+
+" tabs
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" Start scrolling some lines before bottom of window
+set scrolloff=4
+
+" Set window title to filename
+set title
+
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+
+" buffers can exist in the background without being in a window
+set hidden
+
+" Keep a longer history
+set history=1000
+
+" Better command-line completion
+set wildmenu
+ 
+" Show partial commands in the last line of the screen
+set showcmd
+
+" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
+" mapping of <C-L> below)
+set hlsearch
+
+" Find the next match as we type the search
+set incsearch
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+ 
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs, etc.
+set autoindent
+ 
+" Stop certain movements from always going to the first character of a line.
+" While this behaviour deviates from that of Vi, it does what most users
+" coming from other editors would expect.
+set nostartofline
+ 
+" Display the cursor position on the last line of the screen or in the status
+" line of a window
+set ruler
+
+" Use visual bell instead of beeping when doing something wrong
+set visualbell
+ 
+" And reset the terminal code for the visual bell. If visualbell is set, and
+" this line is also included, vim will neither flash nor beep. If visualbell
+" is unset, this does nothing.
+set t_vb=
+ 
+" Display line numbers on the left
+set number
+" Set their color
+highlight LineNr ctermfg=grey ctermbg=darkblue
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" Enable paste option
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+" Mouse support (disables normal pasting)
+"set mouse=a
+
+" Automatically reload file on file change
+set autoread
+
+" Set custom keymaps
+" toggle line number display
+map <F3> :set number!<CR>
+" move words forward
+map <Space> 3w
+" move words backward
+map <Backspace> 3b
+

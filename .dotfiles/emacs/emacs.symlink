@@ -1,0 +1,6 @@
+;;;; Emacs configuration file
+
+;;; extend syntax
+(add-to-list 'auto-mode-alist '("\\.shell\\'" . sh-mode))
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
+(add-to-list 'auto-mode-alist '("\\.bash\\'" . sh-mode))

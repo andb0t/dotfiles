@@ -1,3 +1,6 @@
 .git
 ssh
 thunderbird
+tmux/tmux-resurrect
+zsh/zsh-autosuggestions
+zsh/zsh-syntax-highlighting

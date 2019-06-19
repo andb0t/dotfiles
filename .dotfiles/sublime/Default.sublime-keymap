@@ -1,0 +1,33 @@
+[
+    // atom-like bindings
+	{ "keys": ["alt+up"], "command": "select_lines", "args": {"forward": false} },
+	{ "keys": ["alt+down"], "command": "select_lines", "args": {"forward": true} },
+	{ "keys": ["ctrl+up"], "command": "swap_line_up" },
+	{ "keys": ["ctrl+down"], "command": "swap_line_down" },
+	{ "keys": ["ctrl+shift+up"], "command": "unbound" },
+	{ "keys": ["ctrl+shift+down"], "command": "unbound" },
+    { "keys": ["ctrl+shift+o"], "command": "prompt_open_folder" },
+    // disable close
+    { "keys": ["ctrl+q"], "command": "unbound" },
+    // side-bar behavior
+    { "keys": ["ctrl+k", "ctrl+b"], "command": "unbound" },
+    { "keys": ["ctrl+\\"], "command": "toggle_side_bar" },
+    { "keys": ["ctrl+shift+\\"], "command": "focus_side_bar" },
+    // panes from origami package
+    { "keys": ["ctrl+q", "up"], "command": "travel_to_pane", "args": {"direction": "up"} },
+    { "keys": ["ctrl+q", "right"], "command": "travel_to_pane", "args": {"direction": "right"} },
+    { "keys": ["ctrl+q", "down"], "command": "travel_to_pane", "args": {"direction": "down"} },
+    { "keys": ["ctrl+q", "left"], "command": "travel_to_pane", "args": {"direction": "left"} },
+    { "keys": ["ctrl+q", "shift+up"], "command": "carry_file_to_pane", "args": {"direction": "up"} },
+    { "keys": ["ctrl+q", "shift+right"], "command": "carry_file_to_pane", "args": {"direction": "right"} },
+    { "keys": ["ctrl+q", "shift+down"], "command": "carry_file_to_pane", "args": {"direction": "down"} },
+    { "keys": ["ctrl+q", "shift+left"], "command": "carry_file_to_pane", "args": {"direction": "left"} },
+    { "keys": ["ctrl+q", "ctrl+up"], "command": "create_pane", "args": {"direction": "up"} },
+    { "keys": ["ctrl+q", "ctrl+right"], "command": "create_pane", "args": {"direction": "right"} },
+    { "keys": ["ctrl+q", "ctrl+down"], "command": "create_pane", "args": {"direction": "down"} },
+    { "keys": ["ctrl+q", "ctrl+left"], "command": "create_pane", "args": {"direction": "left"} },
+    { "keys": ["ctrl+q", "x"], "command": "destroy_pane", "args": {"direction": "self"} },
+    // switch panes in normal order
+    { "keys": ["ctrl+tab"], "command": "next_view" },
+    { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
+]

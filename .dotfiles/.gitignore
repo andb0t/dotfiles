@@ -1,0 +1,9 @@
+# duply: ignore gpg keys
+duply/**/*.gpg
+duply/**/*.asc
+
+# CLIC setup
+**/nohup.out
+
+# jupyter
+jupyter/migrated

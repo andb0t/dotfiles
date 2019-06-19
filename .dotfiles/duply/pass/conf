@@ -1,0 +1,5 @@
+SOURCE="$HOME/.password-store"
+TARGET="file://$DROPBOX/Backups/pass"
+GPG_KEY='E04FD71B'
+TEMP_DIR="$HOME/.cache/tmp"
+

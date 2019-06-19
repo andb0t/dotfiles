@@ -1,0 +1,24 @@
+[user]
+    name = NAME NAME NAME
+    email = YOUR@EMAIL.COM
+	
+[alias]
+    co = checkout
+    lola = log --graph --decorate=full\n--pretty=oneline --abbrev-commit --all
+[color]
+    ui = true
+    diff = auto
+    status = auto
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim
+    autocrlf = false
+    eol = lf
+[push]
+    default = simple
+[pull]
+	rebase = true
+[include]
+    # Set local file if existent
+    path = ~/.gitconfig_local
+

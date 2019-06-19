@@ -1,0 +1,14 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Compare Side-By-Side",
+		"Insert Nums",
+		"MoveText",
+		"Origami",
+		"Package Control"
+	],
+}

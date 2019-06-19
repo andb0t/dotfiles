@@ -1,0 +1,5 @@
+cmdCount = 1;
+
+prompt = function() {
+             return "[" + (cmdCount++) + "] " + db + "> ";
+         }

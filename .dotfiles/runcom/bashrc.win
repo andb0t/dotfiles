@@ -1,0 +1,19 @@
+if "$VERBOSE"; then
+  echo "Loading bashrc.win"
+fi
+
+# some more ls aliases
+alias ld="ls -ld */"   # List in long format, only directories
+alias ll='ls -alF'     # List all in long format
+alias la='ls -A'       # List all
+alias l='ls -l'        # List in long format
+
+# git
+alias  gc="git commit -m"
+alias  gd="git diff"
+alias  gs="git status"
+alias  gl="git lola -10"
+alias gll="git lola"
+alias gaa="git add -u"
+alias  ga="git add"
+alias gca="git commit --amend"

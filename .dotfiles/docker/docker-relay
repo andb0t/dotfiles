@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Initiating connection of WSL docker daemon to docker engine on windows ..."
+exec socat UNIX-LISTEN:/var/run/docker.sock,fork,group=docker,umask=007 EXEC:"$WIN_HOME/Projects/go/bin/npiperelay.exe -ep -s //./pipe/docker_engine",nofork &
+

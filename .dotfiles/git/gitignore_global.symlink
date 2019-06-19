@@ -1,0 +1,8 @@
+# General backups
+*~
+
+# vim
+*.swp
+
+# emacs
+*#

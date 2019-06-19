@@ -1,0 +1,30 @@
+{
+  "keys": {
+    "edit": {
+      "bind": {
+        "": "edit mode keybindings are very unstable and likely not working"
+      }
+    },
+    "command": {
+      "bind": {
+        "a": "jupyter-notebook:insert-cell-above",
+        "alt-ctrl-shift-enter": "jupyter-notebook:restart-kernel-and-run-all-cells",
+        "enter": "jupyter-notebook:insert-cell-below",
+        "alt-ctrl-shift-backspace": "jupyter-notebook:restart-kernel-and-clear-output",
+        "ctrl-shift-backspace": "jupyter-notebook:clear-all-cells-output",
+        "b": "jupyter-notebook:insert-cell-below",
+        "i": "jupyter-notebook:enter-edit-mode",
+        "ctrl-shift-enter": "jupyter-notebook:run-all-cells"
+      },
+      "unbind": [
+        "enter",
+        "j",
+        "k",
+        "shift-k",
+        "shift-j",
+        "b",
+        "a"
+      ]
+    }
+  }
+}

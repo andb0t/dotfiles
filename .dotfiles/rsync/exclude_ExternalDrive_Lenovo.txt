@@ -1,0 +1,5 @@
+.Trash*
+'System Volume Information'
+Ubuntu_Backup
+'$RECYCLE.BIN'
+Software

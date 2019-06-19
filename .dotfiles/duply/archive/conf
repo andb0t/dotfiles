@@ -1,0 +1,5 @@
+SOURCE="/media/$USER/ExternalDrive_Lenovo"
+TARGET="file://$HOME/Backups/archive"
+GPG_KEY='E04FD71B'
+TEMP_DIR="$HOME/.cache/tmp"
+

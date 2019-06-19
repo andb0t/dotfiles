@@ -1,0 +1,28 @@
+{
+	"added_words":
+	[
+		"neutralinos",
+		"charginos",
+		"fermionic",
+		"partons",
+		"fluence",
+		"beampipe",
+		"hadronic",
+		"microstrip",
+		"endcaps",
+		"trilinear"
+	],
+	"always_show_minimap_viewport": true,
+	"auto_find_in_selection": true,
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"draw_minimap_border": true,
+	"ensure_newline_at_eof_on_save": false,
+	"font_size": 8,
+	"ignored_packages":
+	[
+		"0_package_control_loader",
+		"Vintage"
+	],
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}

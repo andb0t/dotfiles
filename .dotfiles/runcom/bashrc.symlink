@@ -1,0 +1,69 @@
+# Only run in interactive shells (e.g. not for scp)
+if [ -z "$PS1" ]; then
+    return
+fi
+
+# Set verbose shell script loading
+if [ -z $VERBOSE ]; then
+  export VERBOSE=true
+fi
+
+if "$VERBOSE"; then
+  echo "Loading bashrc.symlink"
+fi
+
+# Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
+
+READLINK=$(which readlink || which greadlink)
+CURRENT_SCRIPT=$BASH_SOURCE
+
+if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
+  SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
+  DOTFILES_DIR=$(dirname "$(dirname "$SCRIPT_PATH")")
+elif [ -d "$HOME/.dotfiles" ]; then
+  DOTFILES_DIR="$HOME/.dotfiles"
+else
+  echo "Unable to find dotfiles, exiting."
+  return
+fi
+export DOTFILES_DIR
+
+
+# Activate zshell
+
+USE_ZSHELL=true
+
+if test -t 1 && $USE_ZSHELL; then
+	if "$VERBOSE"; then
+		echo "Switching to zsh ..."
+	fi
+  exec zsh
+fi
+
+# source files with .shell extension
+for file in $DOTFILES_DIR/**/*.shell; do
+    source $file
+done
+
+# Read the dotfiles
+
+for DOTFILE in "$DOTFILES_DIR"/**/*.bash; do
+	[ -f "$DOTFILE" ] && . "$DOTFILE"
+done
+
+
+# Set LSCOLORS
+
+eval "$(dircolors "$DOTFILES_DIR"/system/dir_colors)"
+
+
+# Clean up
+
+unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
+
+
+# Set local file if existent
+
+if [ -f ~/.bashrc_local ]; then
+    source ~/.bashrc_local
+fi

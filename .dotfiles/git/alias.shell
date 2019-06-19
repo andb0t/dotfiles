@@ -1,0 +1,15 @@
+if "$VERBOSE"; then
+  echo "Loading git/alias.shell"
+fi
+
+# git
+alias  gc="git commit -m"
+alias  gd="git diff"
+alias  gs="git status"
+alias  gl="git lola -10"
+alias gll="git lola"
+alias gaa="git add -u"
+alias  ga="git add"
+alias gca="git commit --amend"
+alias gbr="git branch -vv --color=never | grep --color -E '(\[.*gone\])|$'"
+alias gprune="git remote prune origin | grep \"\[pruned\]\" | awk '{print $3}' | sed -e 's/.*\/\(.*\)/\1/g' | xargs git branch -d"
