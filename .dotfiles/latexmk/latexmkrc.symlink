@@ -1,0 +1,4 @@
+print "Info: read my initialization file ...\n";
+
+$pdf_previewer = 'powershell.exe';
+print "Set pdf_previewer = $pdf_previewer\n";

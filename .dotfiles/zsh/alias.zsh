@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading alias.zsh"
+  echo "Loading zsh/alias.zsh"
 fi
 
 

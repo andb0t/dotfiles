@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading widgets.zsh"
+  echo "Loading zsh/widgets.zsh"
 fi
 
 # -- Movement -----------------------------------------------------------------

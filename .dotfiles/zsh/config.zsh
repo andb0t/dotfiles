@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading config.zsh"
+  echo "Loading zsh/config.zsh"
 fi
 
 # -- Changing directories -----------------------------------------------------

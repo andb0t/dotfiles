@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading zshrc_CLIC"
+  echo "Loading zsh/zshrc_CLIC"
 fi
 
 #this is to avoid QT library problem in clic setup

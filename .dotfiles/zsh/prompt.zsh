@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading prompt.zsh"
+  echo "Loading zsh/prompt.zsh"
 fi
 
 # Deﬁne associative array parameters $fg and $bg
@@ -11,6 +11,15 @@ then
 else ""
 	git="/usr/bin/git"
 fi
+
+check_last_exit_code() {
+  local LAST_EXIT_CODE=$?
+  if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+    local EXIT_CODE_PROMPT=' '
+    EXIT_CODE_PROMPT+="%{$bg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
+  fi
+  echo "$EXIT_CODE_PROMPT"
+}
 
 prompt_git_prompt_info () {
   ref=$($git symbolic-ref HEAD 2>/dev/null)
@@ -98,7 +107,7 @@ prompt_top_right_prompt () {
   local zero='%([BSUbfksu]|([FK]|){*})'
   local left_length=${#${(S%%)${1}//$~zero/}}
   #local right_prompt=' [%*]'  # updates itself at reset-prompt
-  local right_prompt=" ■ [`date +%H:%M:%S`]"
+  local right_prompt="$last_exit_code ■ [`date +%H:%M:%S`]"
   right_length=${#${(S%%)${right_prompt}//$~zero/}}
   local fill_length=$(($COLUMNS-$left_length-$right_length-1))
   if [[ $fill_length -gt 50 ]]; then
@@ -134,6 +143,7 @@ prompt_set_prompt() {
 }
 
 precmd() {
+  local last_exit_code=$(check_last_exit_code)
   prompt_wtitle "%m: %55<...<%~"
   prompt_set_prompt
 }

@@ -1,6 +1,6 @@
 'atom-workspace atom-text-editor':
   'ctrl-k ctrl-k': 'editor:delete-to-end-of-line'
-  # 'ctrl-u ctrl-u': 'editor:delete-to-beginning-of-line'  # conflict with unselect-last
+  'ctrl-l ctrl-l': 'editor:delete-to-beginning-of-line'
 
 'atom-workspace':
   'ctrl-shift-7': 'blame:toggle'

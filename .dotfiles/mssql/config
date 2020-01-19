@@ -1,0 +1,19 @@
+# selection of config options from https://github.com/dbcli/mssql-cli/blob/master/mssqlcli/mssqlclirc
+
+[main]
+
+# mssql-cli prompt
+# \t - Current date and time
+# \u - Username
+# \h - Hostname of the server
+# \d - Database name
+# \p - Database port
+# \n - Newline
+prompt = '\u@\h:\p \d\n> '
+
+# Keybindings:
+# When Vi mode is enabled you can use modal editing features offered by Vi in the REPL.
+# When Vi mode is disabled emacs keybindings such as Ctrl-A for home and Ctrl-E
+# for end are available in the REPL.
+vi = True
+

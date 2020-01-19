@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-	echo "Loading zshrc.symlink"
+	echo "Loading zsh/zshrc.symlink"
 fi
 
 # zle keybinding type (e or v)
@@ -18,11 +18,11 @@ done
 
 # source external packages
 if "$VERBOSE"; then
-    echo "Loading zsh-autosuggestions.zsh"
+    echo "Loading zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 source $DOTFILES_DIR/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 if "$VERBOSE"; then
-    echo "Loading zsh-syntax-highlighting.zsh"
+    echo "Loading zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 source $DOTFILES_DIR/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

@@ -38,6 +38,9 @@ cp -b --no-preserve=mode,ownership "$WIN_HOME"/Documents/signature_*.txt "$DOTFI
 echo "Pulling powershell scripts"
 cp -b --no-preserve=mode,ownership "$WIN_HOME"/powershell/*.ps1 "$DOTFILES_DIR"/powershell/
 
+echo "Pulling powershell config"
+cp -b --no-preserve=mode,ownership "$WIN_HOME"/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 "$DOTFILES_DIR"/powershell/
+
 echo "Pulling ijupyter settings"
 cp -rb --no-preserve=mode,ownership "$WIN_HOME"/.jupyter/* "$DOTFILES_DIR"/jupyter/
 
@@ -47,5 +50,8 @@ cp -b --no-preserve=mode,ownership "$intellij_dir/config/keymaps/my_keymap.xml" 
 
 echo "Pulling visual studio settings"
 vs_dir=$(find "$WIN_HOME/appdata/Local/microsoft/visualstudio" -maxdepth 1 -type d -name '16*' -print)
-cp -b --no-preserve=mode,ownership "$vs_dir"/settings/my_keybindings.vssettings "$DOTFILES_DIR"//visualstudio
+cp -b --no-preserve=mode,ownership "$vs_dir"/settings/my_keybindings.vssettings "$DOTFILES_DIR"/visualstudio
 
+echo "Pulling visual studio code settings"
+vsc_dir="$WIN_HOME/AppData/Roaming/Code/User"
+cp -b --no-preserve=mode,ownership "$vsc_dir"/*.json "$DOTFILES_DIR"/vscode

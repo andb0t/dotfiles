@@ -6,7 +6,10 @@ Clone repo to `.dotfiles`
 git clone --recursive YOUR@EMAIL.COM:andb0t/dotfiles.git ~/.dotfiles
 # git clone --recursive https://YOUR@EMAIL.COM/andb0t/dotfiles.git ~/.dotfiles  # alternative via HTTPS
 cd ~/.dotfiles
+# install AND create symlinks
 ./install.sh [SETUP]  # execute without to see options
+# ONLY create symlinks
+./link.sh [SETUP]
 ```
 
 ## Todo
@@ -47,6 +50,16 @@ Special file extensions:
 * *.bash: sourced if shell == bash
 
 ## Incomplete list of essential commands
+
+###  Azure CLI
+```
+az login
+# see available accounts
+az account list --output table
+# connect with kubernetes cluster
+az account set --subscription "ts-sub-eu-dev"
+az aks get-credentials -n we-prod-asd-aks -g we-prod-asd-rg
+```
 
 ### VIM
 * \v[REGEX]  # make regex matching very magic ((), {}, <>, ?, +)

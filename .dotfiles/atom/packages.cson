@@ -6,6 +6,7 @@ packages: [
   "busy"
   "busy-signal"
   "color-picker"
+  "duplicate-removal"
   "editorconfig"
   "file-icons"
   "go-debug"

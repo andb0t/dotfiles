@@ -4,7 +4,8 @@
 	
 [alias]
     co = checkout
-    lola = log --graph --decorate=full\n--pretty=oneline --abbrev-commit --all
+    lola = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %<(50,trunc)%s %Cgreen(%cd)%Creset %C(bold blue)<%<(10,trunc)%an>%Creset' --all --date=short
+    lol = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %<(50,trunc)%s' --all --date=short 
 [color]
     ui = true
     diff = auto
@@ -21,4 +22,5 @@
 [include]
     # Set local file if existent
     path = ~/.gitconfig_local
-
+[url "ssh://YOUR@EMAIL.COM/"]
+        insteadOf = https://gitlab.com/

@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading config.shell"
+  echo "Loading system/config.shell"
 fi
 
 stty ixany

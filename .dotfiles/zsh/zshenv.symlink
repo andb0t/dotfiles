@@ -1,4 +1,5 @@
 if "$VERBOSE"; then
-    echo "Loading zshenv.symlink"
+    echo "Loading zsh/zshenv.symlink"
 fi
-DEBIAN_PREVENT_KEYBOARD_CHANGES=yes
+export DEBIAN_PREVENT_KEYBOARD_CHANGES=yes
+

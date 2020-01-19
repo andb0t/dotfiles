@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading zshrc_Centos"
+  echo "Loading zsh/zshrc_Centos"
 fi
 
 # set locales

@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading keybindings.zsh"
+  echo "Loading zsh/keybindings.zsh"
 fi
 
 typeset -g -A key
@@ -28,8 +28,9 @@ key[OtherC-Right]='^[OC'
 key[C-Left]='^[[1;5D'
 key[OtherC-Left]='^[OD'
 key[C-k]='^K'
-key[C-u]='^U'
+key[C-o]='^O'
 key[C-r]='^R'
+key[C-u]='^U'
 key[Alt-Right]='^[[1;3C'
 key[Alt-Left]='^[[1;3D'
 key[Alt-k]='^[k'
@@ -77,6 +78,7 @@ key[S-Left]='^[[1;2D'
 # -- Special keybindings ------------------------------------------------------
 
 [[ -n "${key[Alt-k]}" ]] 		&& bindkey "${key[Alt-k]}" 		  widget-forget-history
+[[ -n "${key[C-o]}" ]]          && bindkey -s "${key[C-o]}"       'ranger-cd\n'
 
 # Always pad pipe with whitespace
 bindkey '|' widget-self-insert-padded

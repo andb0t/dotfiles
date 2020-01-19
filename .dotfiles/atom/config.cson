@@ -33,11 +33,13 @@
       "atom-ide-ui"
       "atom-beautify"
     ]
+    excludeVcsIgnoredPaths: false
     packagesWithKeymapsDisabled: [
       "blame"
     ]
     telemetryConsent: "limited"
     uriHandlerRegistration: "always"
+    warnOnLargeFileLimit: 1
   editor:
     invisibles: {}
     lineHeight: 1.4
@@ -91,6 +93,7 @@
     addNewTabsAtEnd: true
     displayMruTabList: false
     enableMruTabSwitching: false
+  "tree-view": {}
   welcome:
     showOnStartup: false
   whitespace:

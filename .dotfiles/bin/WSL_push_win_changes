@@ -51,6 +51,9 @@ then
     mkdir -p "$WIN_HOME"/powershell
     cp -b "$DOTFILES_DIR"/powershell/*.ps1 "$WIN_HOME"/powershell/
 
+    echo "Pushing powershell config"
+    cp -b "$DOTFILES_DIR"/powershell/Microsoft.PowerShell_profile.ps1 "$WIN_HOME"/Documents/WindowsPowerShell/
+
     echo "Pushing jupyter settings"
     mkdir -p "$WIN_HOME"/.jupyter
     cp -rb "$DOTFILES_DIR"/jupyter/* "$WIN_HOME"/.jupyter
@@ -63,4 +66,7 @@ then
     vs_dir=$(find "$WIN_HOME/appdata/Local/microsoft/visualstudio" -maxdepth 1 -type d -name '16*' -print)
     cp -b "$DOTFILES_DIR"/visualstudio/my_keybindings.vssettings "$vs_dir"/settings/
 
+    echo "Pushing visual stuido code settings"
+    vsc_dir="$WIN_HOME/AppData/Roaming/Code/User"
+    cp -b "$DOTFILES_DIR"/vscode/*.json "$vsc_dir"
 fi

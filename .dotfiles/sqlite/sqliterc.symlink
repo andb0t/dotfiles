@@ -1,0 +1,22 @@
+------------------------------
+-- My SQLITE3 config file
+------------------------------
+
+------------------------------
+-- Configure general modifiers 
+------------------------------
+.headers on
+.mode column 
+.nullvalue NULL 
+.prompt "> " "... "
+.timer off
+
+------------------------------
+-- Prompt
+------------------------------
+.print "========== Welcome! =========="
+.print "Databases:"
+.databases
+.print "\nTables:"
+.tables
+.print "=============================="

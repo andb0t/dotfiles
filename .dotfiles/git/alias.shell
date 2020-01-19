@@ -5,9 +5,11 @@ fi
 # git
 alias  gc="git commit -m"
 alias  gd="git diff"
+alias gdc="git diff --cached"
 alias  gs="git status"
-alias  gl="git lola -10"
-alias gll="git lola"
+alias  gl="git lol -10"
+alias gll="git lol"
+alias gla="git lola"
 alias gaa="git add -u"
 alias  ga="git add"
 alias gca="git commit --amend"

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if "$VERBOSE"; then
+  echo "Loading zsh/zshrc_Android"
+fi
+
 echo "Setting up android terminal environment ..."
 
 # Protect from accidental apt usage

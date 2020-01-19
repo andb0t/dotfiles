@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading function.zsh"
+  echo "Loading zsh/function.zsh"
 fi
 
 # History management
@@ -71,9 +71,12 @@ pathrmall () {
           pathrmall $1 $2
     fi
 }
-
-atom () {
-    # start atom in the right directory
-    filepath=$(lintowin $1)
-    "$WIN_HOME/AppData/Local/atom/atom.exe" "$filepath"
+function ranger-cd {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+    ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(cat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
 }

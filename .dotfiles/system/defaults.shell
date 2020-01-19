@@ -1,8 +1,10 @@
 if "$VERBOSE"; then
-  echo "Loading defaults.shell"
+  echo "Loading system/defaults.shell"
 fi
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export HTOPRC="$DOTFILES_DIR"/htop/htoprc
 
+# prevent telemetry for mssql
+export MSSQL_CLI_TELEMETRY_OPTOUT=True

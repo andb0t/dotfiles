@@ -1,0 +1,9 @@
+{
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "window.zoomLevel": 0,
+    "editor.renderWhitespace": "boundary",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "workbench.tree.indent": 20
+}

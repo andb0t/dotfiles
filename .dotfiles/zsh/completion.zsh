@@ -1,9 +1,10 @@
 if "$VERBOSE"; then
-  echo "Loading completion.zsh"
+  echo "Loading zsh/completion.zsh"
 fi
 
 # Activate completion system - fix missing compdef function
 autoload -Uz compinit
+zstyle ':completion:*' menu select
 compinit
 
 # Use same colors for autocompletion

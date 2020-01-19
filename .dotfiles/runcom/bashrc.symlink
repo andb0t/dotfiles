@@ -9,7 +9,7 @@ if [ -z $VERBOSE ]; then
 fi
 
 if "$VERBOSE"; then
-  echo "Loading bashrc.symlink"
+  echo "Loading runcom/bashrc.symlink"
 fi
 
 # Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)

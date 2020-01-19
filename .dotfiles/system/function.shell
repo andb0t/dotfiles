@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading function.shell"
+  echo "Loading system/function.shell"
 fi
 
 # Create a new directory and enter it
