@@ -8,3 +8,7 @@ export HTOPRC="$DOTFILES_DIR"/htop/htoprc
 
 # prevent telemetry for mssql
 export MSSQL_CLI_TELEMETRY_OPTOUT=True
+
+# disable LESS and git diff sounds
+export LESS="$LESS -R -Q"
+

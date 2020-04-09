@@ -2,4 +2,6 @@ if "$VERBOSE"; then
   echo "Loading system/config.shell"
 fi
 
-stty ixany
+# configure terminal
+stty ixany  # Let any character restart output, not only start character.
+

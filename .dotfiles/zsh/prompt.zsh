@@ -22,11 +22,11 @@ check_last_exit_code() {
 }
 
 prompt_git_prompt_info () {
-  ref=$($git symbolic-ref HEAD 2>/dev/null)
+  ref=$(git symbolic-ref HEAD 2>/dev/null)
   if [[ $ref == "" ]]; then
-    echo "$($git rev-parse --short HEAD)"
+    echo $(git rev-parse --short HEAD)
   else
-    echo "${ref#refs/heads/}"
+    echo ${ref#refs/heads/}
   fi
 }
 
@@ -41,9 +41,9 @@ prompt_venv_prompt_info () {
 
 prompt_unpushed () {
   local revision
-  revision="$($git rev-parse --symbolic-full-name @{push} 2> /dev/null)"
-  [[ $? != 0 ]] && revision="$($git rev-parse --symbolic-full-name @{upstream} 2> /dev/null)"
-  $git cherry -v ${revision} 2> /dev/null
+  revision="$(git rev-parse --symbolic-full-name @{push} 2> /dev/null)"
+  [[ $? != 0 ]] && revision="$(git rev-parse --symbolic-full-name @{upstream} 2> /dev/null)"
+  git cherry -v ${revision} 2> /dev/null
 }
 
 prompt_need_push () {
@@ -64,29 +64,34 @@ prompt_need_push () {
 }
 
 prompt_git_dirty() {
-  if $(! $git status -s &> /dev/null)
+  if ! $(git rev-parse 2>/dev/null);
   then
     echo ""
   else
-    if [[ $($git status --porcelain) == "" ]]
+    BRANCH_NAME=$(prompt_git_prompt_info)
+    if [[ ${#BRANCH_NAME} -gt 20 ]]
     then
-      echo "(%{$fg_bold[green]%}$(prompt_git_prompt_info)%{$reset_color%}$(prompt_need_push)) "
-    else
+        BRANCH_NAME=${BRANCH_NAME:0:17}"..."
+    fi
+    if ! git diff --exit-code --quiet --cached;
+    then
       GIT_CACHED="`git diff --cached --shortstat`"
-      if [[ $GIT_CACHED == "" ]]
-      then
-        echo "(%{$fg_bold[red]%}$(prompt_git_prompt_info)%{$reset_color%}$(prompt_need_push)) "
+      N_CACHED="`echo $GIT_CACHED | sed -r 's/ *([0-9]+).*/\1/'`"
+      CACHED_ELEMENT="●"
+      CACHED_STRING=""
+      if [[ $N_CACHED -lt 5 ]]; then
+        for i in $(seq $N_CACHED); do CACHED_STRING+=$CACHED_ELEMENT; done
       else
-        N_CACHED="`echo $GIT_CACHED | sed -r 's/ *([0-9]+).*/\1/'`"
-        CACHED_ELEMENT="●"
-        CACHED_STRING=""
-        if [[ $N_CACHED -lt 5 ]]; then
-          for i in $(seq $N_CACHED); do CACHED_STRING+=$CACHED_ELEMENT; done
-        else
-          CACHED_STRING=" $N_CACHED×$CACHED_ELEMENT"
-        fi
-        echo "(%{$fg_bold[yellow]%}$(prompt_git_prompt_info)$CACHED_STRING%{$reset_color%}$(prompt_need_push)) "
+        CACHED_STRING=" $N_CACHED×$CACHED_ELEMENT"
       fi
+      echo "(%{$fg_bold[yellow]%}$BRANCH_NAME$CACHED_STRING%{$reset_color%}$(prompt_need_push)) "
+    else
+      if ! git diff --exit-code --quiet; 
+      then
+        echo "(%{$fg_bold[red]%}$BRANCH_NAME%{$reset_color%}$(prompt_need_push)) "
+      else
+        echo "(%{$fg_bold[green]%}$BRANCH_NAME%{$reset_color%}$(prompt_need_push)) "
+     fi
     fi
   fi
 }
@@ -100,7 +105,8 @@ prompt_host_name() {
 }
 
 prompt_directory_name(){
-  echo "%{$fg_bold[cyan]%}%1~%\%{$reset_color%}"
+  DIRECTORY_NAME="%2~%"
+  echo "%{$fg_bold[cyan]%}$DIRECTORY_NAME\%{$reset_color%}"
 }
 
 prompt_top_right_prompt () {

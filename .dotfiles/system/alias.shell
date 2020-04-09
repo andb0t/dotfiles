@@ -40,6 +40,7 @@ alias dirs='dirs -v'
 alias rsync="rsync -vh"
 alias emacs="emacs -nw"
 alias pdflatex="pdflatex -interaction=nonstopmode -halt-on-error"
+alias cal="ncal -w -3 -M -b"
 
 # List declared aliases, functions, paths
 alias aliases="alias | sed 's/=.*//'"
