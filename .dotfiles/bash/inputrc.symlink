@@ -1,3 +1,5 @@
+#  Configuration file for the GNU readline library
+
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
 
@@ -34,4 +36,3 @@ set convert-meta off
 # Filtered history search
 "\e[A": history-search-backward
 "\e[B": history-search-forward
-

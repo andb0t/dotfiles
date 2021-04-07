@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-	echo "Loading zsh/zshrc.symlink"
+    echo "Load $HOME/.zshrc -> $DOTFILES_DIR/zsh/zshrc.symlink"
 fi
 
 # zle keybinding type (e or v)
@@ -17,30 +17,26 @@ for file in $DOTFILES_DIR/**/*.shell; do
 done
 
 # source external packages
+zsh_autosuggestions="zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 if "$VERBOSE"; then
-    echo "Loading zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    echo "Load $DOTFILES_DIR/$zsh_autosuggestions"
 fi
-source $DOTFILES_DIR/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $DOTFILES_DIR/$zsh_autosuggestions
+zsh_highlighting="zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 if "$VERBOSE"; then
-    echo "Loading zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    echo "Load $DOTFILES_DIR/$zsh_highlighting"
 fi
-source $DOTFILES_DIR/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $DOTFILES_DIR/$zsh_highlighting
 
 # enable direnv support
 if [ -f /usr/bin/direnv ]; then
     eval "$(direnv hook zsh)"
 else
-    echo "Info: no direnv installed."
+    message="Info: direnv not installed. Skip direnv setup."; echo -e "\e[01;33m$message\e[0m"
 fi
 
-# source files with .zsh extension
-for file in $DOTFILES_DIR/**/*.zsh; do
-    if [[ $file =~ "zsh-autosuggestions" ]]; then
-        continue
-    fi
-    if [[ $file =~ "zsh-syntax-highlighting" ]]; then
-        continue
-    fi
+# source files with .shell.zsh extension
+for file in $DOTFILES_DIR/zsh/*.shell.zsh; do
     source $file
 done
 
@@ -51,4 +47,3 @@ fi
 
 # don't nice background processes (remove error message when finishing command with '&')
 unsetopt BG_NICE
-

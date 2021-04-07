@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading system/defaults.shell"
+    echo "Load $DOTFILES_DIR/system/defaults.shell"
 fi
 
 export VISUAL=vim
@@ -10,5 +10,14 @@ export HTOPRC="$DOTFILES_DIR"/htop/htoprc
 export MSSQL_CLI_TELEMETRY_OPTOUT=True
 
 # disable LESS and git diff sounds
-export LESS="$LESS -R -Q"
+export LESS="-F -X -R"  # keep default behavior
+export LESS="$LESS -Q"  # disable beeps, especially for git diffs
 
+# configure perl
+PERL_HOME="${HOME}/.local/share/perl5"
+if [ -d "$PERL_HOME" ]; then
+  export PERL5LIB="${PERL_HOME}/lib/perl5${PERL5LIB:+:${PERL5LIB}}";
+  export PERL_LOCAL_LIB_ROOT="${PERL_HOME}${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}";
+  export PERL_MB_OPT="--install_base \"${PERL_HOME}\"";
+  export PERL_MM_OPT="INSTALL_BASE=${PERL_HOME}";
+fi

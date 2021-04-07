@@ -1,7 +1,6 @@
 if "$VERBOSE"; then
-  echo "Loading system/config.shell"
+    echo "Load $DOTFILES_DIR/system/config.shell"
 fi
 
 # configure terminal
 stty ixany  # Let any character restart output, not only start character.
-

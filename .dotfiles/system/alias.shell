@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading system/alias.shell"
+    echo "Load $DOTFILES_DIR/system/alias.shell"
 fi
 
 # allow aliases in sudo
@@ -46,6 +46,7 @@ alias cal="ncal -w -3 -M -b"
 alias aliases="alias | sed 's/=.*//'"
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias exports="export -p | sed 's/=.*//' | awk '{print $NF}'"
+alias sysinfo="cat /etc/*release | column -s '=' -t; echo; readlink /proc/$$/exe"
 
 # dotfiles
 alias cddot='cd $DOTFILES_DIR'
@@ -61,3 +62,7 @@ alias docker-clean=' \
   docker ps --no-trunc -aqf "status=exited" | xargs docker rm ; \
   docker images --no-trunc -aqf "dangling=true" | xargs docker rmi ; \
   docker volume ls -qf "dangling=true" | xargs docker volume rm'
+
+# net
+alias whatsmyip="curl -s https://httpbin.org/ip | jq --raw-output '.[\"origin\"]'"
+

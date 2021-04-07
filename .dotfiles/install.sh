@@ -1,29 +1,12 @@
 #!/bin/bash
 
-./link.sh $1 || exit 1
-
-if [ "$1" == "Android" ] || [ "$1" == "Centos" ]; then
-    echo "Automatic installation not possible via apt on this platform. Use e.g. pkg or yum to install packages by hand!"
-    exit
-fi
+./link.sh "$1" || exit 1
 
 echo "Now install software ..."
-# Packages & package managers
-sudo apt update
-. "$DOTFILES_DIR/install/zsh.sh"
-. "$DOTFILES_DIR/install/vim.sh"
-. "$DOTFILES_DIR/install/tmux.sh"
-. "$DOTFILES_DIR/install/rename.sh"
-. "$DOTFILES_DIR/install/pass.sh"
-. "$DOTFILES_DIR/install/tldr.sh"
-. "$DOTFILES_DIR/install/jq.sh"
-. "$DOTFILES_DIR/install/ranger.sh"
-# . "$DOTFILES_DIR/install/direnv.sh"
-# . "$DOTFILES_DIR/install/brew.sh"
-# . "$DOTFILES_DIR/install/latex.sh"
-# . "$DOTFILES_DIR/install/python.sh"
-# . "$DOTFILES_DIR/install/misc.sh"
-# . "$DOTFILES_DIR/install/java.sh"
-# . "$DOTFILES_DIR/install/atom.sh"
-# . "$DOTFILES_DIR/install/scala.sh"
-# . "$DOTFILES_DIR/install/duply.sh"
+if [ "$1" == "Android" ]; then
+  "$DOTFILES_DIR/install/install_with_pkg.sh"
+elif [ "$1" == "Centos" ]; then
+  "$DOTFILES_DIR/install/install_with_yum.sh"
+else
+  "$DOTFILES_DIR/install/install_with_apt.sh"
+fi

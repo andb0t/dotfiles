@@ -9,7 +9,7 @@ if [ -z $VERBOSE ]; then
 fi
 
 if "$VERBOSE"; then
-  echo "Loading runcom/bashrc.symlink"
+  echo "Load $HOME/.bashrc -> runcom/bashrc.symlink"
 fi
 
 # Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
@@ -33,11 +33,13 @@ export DOTFILES_DIR
 
 USE_ZSHELL=true
 
-if test -t 1 && $USE_ZSHELL; then
-	if "$VERBOSE"; then
-		echo "Switching to zsh ..."
-	fi
-  exec zsh
+CMDOUT=$(command -v zsh --help 1)
+if [ -n "$CMDOUT" ]; then
+  if test -t 1 && $USE_ZSHELL; then
+    exec zsh
+  fi
+else
+  message="Warning: zsh not installed - stay in bash."; echo -e "\e[01;31m$message\e[0m"
 fi
 
 # source files with .shell extension

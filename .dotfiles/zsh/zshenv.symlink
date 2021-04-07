@@ -1,5 +1,4 @@
 if "$VERBOSE"; then
-    echo "Loading zsh/zshenv.symlink"
+    echo "Load $HOME/.zshenv -> $DOTFILES_DIR/zsh/zshenv.symlink"
 fi
 export DEBIAN_PREVENT_KEYBOARD_CHANGES=yes
-

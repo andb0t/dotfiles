@@ -1,6 +1,8 @@
 packages: [
+  "angularjs"
   "atom-beautify"
   "atom-ide-ui"
+  "atom-typescript"
   "autocomplete-python"
   "blame"
   "busy"
@@ -15,6 +17,7 @@ packages: [
   "highlight-selected"
   "Hydrogen"
   "hydrogen-launcher"
+  "ide-html"
   "intentions"
   "language-babel"
   "language-cmake"
@@ -43,4 +46,5 @@ packages: [
   "sequential-number"
   "sort-lines"
   "split-diff"
+  "xml-formatter"
 ]

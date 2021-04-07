@@ -1,11 +1,11 @@
 [user]
     name = NAME NAME NAME
     email = YOUR@EMAIL.COM
-	
+    
 [alias]
     co = checkout
-    lola = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %<(50,trunc)%s %Cgreen(%cd)%Creset %C(bold blue)<%<(10,trunc)%an>%Creset' --all --date=short
-    lol = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %<(50,trunc)%s' --all --date=short 
+    lola = log --graph --pretty=format:'%Cred%h%Creset %C(auto)%d%Creset %<(50,trunc)%s %Cgreen(%cr)%Creset %C(bold blue)<%<(10,trunc)%an>%Creset' --all --date=short
+    lol = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %<(50,trunc)%s' --all --date=short
 [color]
     ui = true
     diff = auto
@@ -18,9 +18,11 @@
 [push]
     default = simple
 [pull]
-	rebase = true
+    rebase = true
 [include]
     # Set local file if existent
     path = ~/.gitconfig_local
 [url "ssh://YOUR@EMAIL.COM/"]
-        insteadOf = https://gitlab.com/
+    insteadOf = https://gitlab.com/
+[credential]
+    helper = cache --timeout 30000

@@ -1,6 +1,6 @@
 # My dotfiles
 
-## Installation
+## Initial setup
 Clone repo to `.dotfiles`
 ```shell
 git clone --recursive YOUR@EMAIL.COM:andb0t/dotfiles.git ~/.dotfiles
@@ -15,12 +15,25 @@ cd ~/.dotfiles
 ## Todo
 * customize ipython in ~/.ipython
 * customize matplotlib in ~/.config/matplotlib
-* add kubernetes configs without secret info to version control
+
 
 ## Manual operations
 * install atom package package-sync and sync, execute to update
+* port gpg keys to new PC
+  ```
+  # on old PC
+  gpg --list-keys  # read ID of gpg key
+  # export ID=THE_ID
+  gpg --export $ID > public.key
+  gpg --export-secret-key $ID > private.key
+  # on new PC
+  gpg --import public.key
+  gpg --import private.key
+  gpg --edit-key [KEYNUMBER]
+  # trust
+  # 5
+  ```
 * swap Esc and Caps Lock:
-    * Windows: use KeyTweak, SharpKeys program or use powershell script
     * SLC6: system preferences >> keyboard ...
     * Ubuntu: `dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"` (`swapescape` to swap)
 * WSL:
@@ -35,31 +48,18 @@ cd ~/.dotfiles
         * mount guest editions CD in VM from Vbox menu, run it
         * enable bidirectional copy & paste
 * Windows:
-    * enable script execution in admin powershell: `Set-ExecutionPolicy RemoteSigned`
-    * execute scripts in `$WIN_HOME/powershell`
-    * remove keys in right click menu:
-        * right-click on folder in "HKEY_CLASSES_ROOT\Directory\shell"
-        * right-click in folder in "HKEY_CLASSES_ROOT\Directory\Background\shell"
+    * follow instructions in this [README](windows/README.md)
 * Android:
     * install `termux-api` app from app store, in addition to the installation in termux
 
+
 ## General information
 Special file extensions:
-* *.shell: sourced for any shell
-* *.zsh: sourced if shell == zshell
-* *.bash: sourced if shell == bash
+* `.shell`: sourced for any shell
+* `.zsh`: sourced if shell == zshell
+* `.bash`: sourced if shell == bash
 
 ## Incomplete list of essential commands
-
-###  Azure CLI
-```
-az login
-# see available accounts
-az account list --output table
-# connect with kubernetes cluster
-az account set --subscription "ts-sub-eu-dev"
-az aks get-credentials -n we-prod-asd-aks -g we-prod-asd-rg
-```
 
 ### VIM
 * \v[REGEX]  # make regex matching very magic ((), {}, <>, ?, +)
@@ -113,19 +113,11 @@ Prefix Ctrl-q:
 * `gpg --list-private-keys`
 * `gpg --decrypt [FILE.gpg]`
 * `gpg --encrypt [FILE]`
-* port keys to new PC
-    ```bash
-    gpg --export ${ID} > public.key
-    gpg --export-secret-key ${ID} > private.key
-    gpg --import public.key
-    gpg --import private.key
-    gpg --edit-ket [KEYNUMBER]
-    >> trust
-    ```
-* unencrypted backup via rsync, e.g.
-  `rsync -aPv --exclude-from=$DOTFILES_DIR/rsync/exclude_ExternalDrive_Lenovo.txt /media/andbot/ExternalDrive_Lenovo ~/Backups`
 
-### Resources 
+* unencrypted backup via rsync, e.g.
+  `rsync -aPv --exclude-from=$DOTFILES_DIR/rsync/exclude_ExternalDrive_Lenovo.txt /media/MYUSER/ExternalDrive_Lenovo ~/Backups`
+
+### Resources
 * [awk](http://www.grymoire.com/Unix/awk.html): `ls -l | awk '/em/{print $9 " was last modified at " $8}'`
 * [grep (g/regular expression/p)](http://www.grymoire.com/Unix/grep.html): `grep 'www\..*\.html' *`
 * [sed (Stream EDitor)](http://www.grymoire.com/Unix/sed.html) `env | sed -r 's/^([^=]*)=.*/\1/'`
@@ -138,4 +130,3 @@ Prefix Ctrl-q:
 ### WSL:  connect WSL to xfce4 X server
 * start Xlaunch, using settings in xming/config.xlaunch
 * execute `xfce4-session` in shell
-

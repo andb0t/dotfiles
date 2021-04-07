@@ -1,7 +1,7 @@
 export VERBOSE=true
 
 if "$VERBOSE"; then
-  echo "Loading runcom/bash_profile.symlink"
+  echo "Load $HOME/.bash_profile -> runcom/bash_profile.symlink"
 fi
 
 # If not running interactively, don't do anything
@@ -13,4 +13,3 @@ fi
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
-

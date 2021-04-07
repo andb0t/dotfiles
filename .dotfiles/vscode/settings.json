@@ -5,5 +5,20 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "workbench.tree.indent": 20
+    "workbench.tree.indent": 20,
+    "files.trimFinalNewlines": true,
+    "files.eol": "\n",
+    "workbench.colorTheme": "Visual Studio 2019 Dark",
+    "window.autoDetectHighContrast": false,
+    "terminal.explorerKind": "external",
+    "telemetry.enableTelemetry": false,
+    "git.autofetch": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "git.confirmSync": false,
+    "files.associations": {
+        "*.shell": "shellscript",
+        "*.symlink": "shellscript",
+        "*.vssettings": "xml"
+    },
+    "editor.minimap.showSlider": "always"
 }

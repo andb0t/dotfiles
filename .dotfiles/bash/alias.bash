@@ -1,3 +1,3 @@
 if "$VERBOSE"; then
-  echo "Loading alias.bash"
+  echo "Load $DOTFILES_DIR/alias.bash"
 fi

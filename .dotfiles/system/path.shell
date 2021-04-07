@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading system/path.shell"
+    echo "Load $DOTFILES_DIR/system/path.shell"
 fi
 
 # Make dotfiles utilities available
@@ -8,6 +8,17 @@ prepend_path "$DOTFILES_DIR/bin"
 
 # Make local binaries available
 prepend_path "$HOME/.local/bin"
+
+# Make pyenv available
+prepend_path "${HOME}/.pyenv/bin"
+if command -v pyenv 1>/dev/null 2>&1; then
+	prepend_path "$(pyenv root)/shims"
+else
+    echo "Info: pyenv not installed - skip path config."
+fi
+
+# make perl available
+append_path "${HOME}/.local/share/perl5/bin"
 
 # Make brew available
 

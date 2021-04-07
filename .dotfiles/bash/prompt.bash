@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading prompt.bash"
+  echo "Load $DOTFILES_DIR/prompt.bash"
 fi
 
 # customize command line prompt

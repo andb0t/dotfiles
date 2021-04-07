@@ -15,6 +15,9 @@
     hyperclick:
       linuxTriggerKeys: "ctrlKey,altKey"
       win32TriggerKeys: "ctrlKey,altKey"
+  "atom-typescript":
+    autocompleteParens: true
+    tooltipDelay: 86400000
   "autocomplete-plus":
     confirmCompletion: "tab"
   "autocomplete-python":
@@ -32,7 +35,10 @@
       "platformio-ide-terminal"
       "atom-ide-ui"
       "atom-beautify"
+      "angularjs"
     ]
+    editor:
+      multiCursorOnClick: true
     excludeVcsIgnoredPaths: false
     packagesWithKeymapsDisabled: [
       "blame"
@@ -41,6 +47,7 @@
     uriHandlerRegistration: "always"
     warnOnLargeFileLimit: 1
   editor:
+    fontSize: 13
     invisibles: {}
     lineHeight: 1.4
     scrollPastEnd: true
@@ -68,7 +75,6 @@
     enableNotice: true
   "linter-ui-default":
     panelHeight: 69
-    showPanel: true
   "markdown-preview":
     breakOnSingleNewline: true
   "markdown-preview-plus":

@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading function.bash"
+  echo "Load $DOTFILES_DIR/function.bash"
 fi
 
 # Switch long/short prompt

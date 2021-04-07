@@ -1,5 +1,5 @@
 if "$VERBOSE"; then
-  echo "Loading system/function.shell"
+    echo "Load $DOTFILES_DIR/system/function.shell"
 fi
 
 # Create a new directory and enter it
@@ -26,6 +26,7 @@ extract () {
       *.pax)      cat "$1" | pax -r                     ;;
       *.pax.Z)    uncompress "$1" --stdout | pax -r     ;;
       *.Z)        uncompress "$1"                       ;;
+      *.7z)       7z e "$1"                             ;;
       *) echo "'$1' cannot be extracted/mounted via extract()" ;;
     esac
   else
@@ -103,7 +104,7 @@ jupyterrun () {
     echo "Executing this notebook $1"
     name=${1%.ipynb}".py"
     tmp_name="tmp_$name"
-    jupyter nbconvert --to script --stdout "$1" > "$tmp_name" 
+    jupyter nbconvert --to script --stdout "$1" > "$tmp_name"
     ipython "$tmp_name"
     mv "$tmp_name" $TRASH
     echo "Done executing notebook $1"
@@ -119,3 +120,20 @@ colorwheel () {
 	done
 }
 
+# fit gif to pane
+#  args 1: argument to "gif-for-cli" = path to gif or search term for gif
+show_gif () {
+  if [ -n "$TMUX" ]; then
+    echo "Hack tmux pane color ... (warning: this pane'scolor is buggy afterwards!)"
+    tmux select-pane -P 'bg=colour232'
+  fi
+  height=$(bc <<< "$LINES - 1")  # adapt to effective pane height
+  gif-for-cli -l 0 --cols "$COLUMNS" --rows "$height" $1
+}
+
+# show a bonfire
+bonfire () {
+  gif_file="$DOTFILES_DIR/img/bonfire.gif"
+  echo "Lighting up a lil' bonfire ..."
+  show_gif "$gif_file"
+}

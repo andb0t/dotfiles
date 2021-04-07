@@ -1,3 +1,5 @@
+*~
+
 # duply: ignore gpg keys
 duply/**/*.gpg
 duply/**/*.asc

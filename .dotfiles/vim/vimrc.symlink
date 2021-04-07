@@ -8,6 +8,7 @@ filetype indent on
 
 " Set a nice colorscheme
 colorscheme elflord
+highlight Normal ctermfg=white ctermbg=black
 
 " Set local file if existent
 
